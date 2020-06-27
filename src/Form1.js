@@ -102,12 +102,9 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
   
-  export default function FormOne(props) {
-    const classes = useStyles(props);
-    const { color, ...other } = props;
+  export default function FormOne() {
+    const classes = useStyles();
     const helperTestClasses = helperTextStyles();
-
-
 
     return (
         <Grid container className={classes.container}>
