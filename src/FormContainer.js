@@ -13,6 +13,9 @@ import StarHalfIcon from '@material-ui/icons/StarHalf';
 import { borders } from '@material-ui/system';
 import LargeForm from './LargeForm';
 import Logo from './assets/logo.svg';
+import Logo2 from './assets/logo2-white.png';
+import ScrollAnimation from 'react-animate-on-scroll';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +42,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex'
     },
     image: {
+        /*
+        background:`linear-gradient(
+            rgba(244, 97, 151, 0.6),
+            rgba(244, 97, 151, 0.6)
+        ),url(${Background})`,
+        */
+        //background: '#F0C808',
+        //background: '#F46197'
         background:`linear-gradient(
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
@@ -63,7 +74,8 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
         //background: 'red',
-        color: '#FFF'
+        //color: '#FFF',
+        //background: '#FFF'
     }
   }));
   
@@ -79,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
             <Grid item xs={12} md={5} className={[classes.split, classes.image]}>
                 <Box className={classes.overlay} borderRadius="50%">
                     <Box>
-                        <img src={Logo} className={classes.logo} height="300" width="300"/>
+                        <img src={Logo2} className={classes.logo} height="70"/>
                     </Box>
                     <Typography variant="body1" style={{ textAlign: 'center', lineHeight: '1.7' }} >
                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ornare quam viverra orci sagittis eu volutpat odio.

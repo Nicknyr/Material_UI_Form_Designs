@@ -19,6 +19,9 @@ import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-ic
 import LockIcon from '@material-ui/icons/Lock';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Logo2 from './assets/logo2.png';
+import ScrollAnimation from 'react-animate-on-scroll';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,18 +40,18 @@ const useStyles = makeStyles((theme) => ({
         },
         '&:hover': {
             background: '#e9f2ef',
-            border: theme.palette.primary.main.dark
+            border: '#F46197'   //theme.palette.primary.main.dark
         },
     },
     button: {
-        background: theme.palette.primary.main,
-        opacity: '.8',
+        background: theme.palette.primary.main, 
+        opacity: '.9',
         color: 'snow',
-        fontWeight: 'bold',
+        fontWeight: 'bolder',
         width: '100%',
 
         '&:hover':{
-            background: theme.palette.primary.main,
+            background:  '#F46197', //theme.palette.primary.main,
             opacity: '1'
         }
     },
@@ -77,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'black',
 
         '&:hover': {
-            color: theme.palette.primary.main
+            color: '#F46197'
         }
     }
   }));
@@ -103,122 +106,124 @@ const useStyles = makeStyles((theme) => ({
     return (
         <Grid container >
             <Grid item xs={12}>
-                <Box align="center">
-                    <Typography variant="h6"> Welcome to </Typography>
-                    <Typography variant="h3">Company</Typography>
-                    <br></br>
-                    <Formik
-                    initialValues={{
-                        username: '',
-                        password: '',
-                    }}
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                    <Box align="center">
+                        <Typography variant="h6"> Welcome to </Typography>
+                        <img src={Logo2} height="60"></img>
+                        <br></br>
+                        <br></br>
+                        <Formik
+                        initialValues={{
+                            username: '',
+                            password: '',
+                        }}
 
-                    validate = {values => {
-                        const errors = {};
+                        validate = {values => {
+                            const errors = {};
 
-                        if(!values.username) {
-                            errors.username = 'Required';
-                        }
+                            if(!values.username) {
+                                errors.username = 'Required';
+                            }
 
-                        if(!values.password) {
-                            errors.password = 'Required';
-                        }
-                        
-                        return errors;
-                    }}
+                            if(!values.password) {
+                                errors.password = 'Required';
+                            }
+                            
+                            return errors;
+                        }}
 
-                    onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        setSubmitting(false);
-                        alert(JSON.stringify(values, null, 2));
-                    }, 500);
-                    }}
-                >
-                    {({ submitForm, isSubmitting }) => (
-                        <Grid item xs={8}>
-                        <Form className={classes.form}>
-                            <Field
-                                component={TextField}
-                                type="username"
-                                name="username"
-                                //label="Username"
-                                fullWidth="true"
-                                variant="outlined"
-                                size="small"
-                                margin="dense"
-                                color="main"
-                                required
-                                placeholder="Username"
-                                id="input-with-icon-adornment"
-                                FormHelperTextProps={{ classes: helperTestClasses }}
-                                InputProps={{
-                                    className: classes.formInput,
-                                    startAdornment: <InputAdornment position="start">
-                                                        <AccountCircleIcon />
-                                                    </InputAdornment>
-                                }}
-                            />
-                            <br />
-                            <Field
-                                component={TextField}
-                                name="password"
-                                type="password"
-                                //label="Password"
-                                fullWidth="true"
-                                variant="outlined"
-                                size="small"
-                                margin="dense"
-                                id="outlined-error"
-                                color="main"
-                                required
-                                placeholder="Password"
-                                id="input-with-icon-adornment"
-                                FormHelperTextProps={{ classes: helperTestClasses }}
-                                InputProps={{
-                                    className: classes.formInput,
-                                    startAdornment: <InputAdornment position="start">
-                                                        <LockIcon />
-                                                    </InputAdornment>
-                                }}
-                            />
-                            <br></br>
-                            {isSubmitting && <LinearProgress />}
+                        onSubmit={(values, { setSubmitting }) => {
+                        setTimeout(() => {
+                            setSubmitting(false);
+                            alert(JSON.stringify(values, null, 2));
+                        }, 500);
+                        }}
+                    >
+                        {({ submitForm, isSubmitting }) => (
+                            <Grid item xs={8}>
+                            <Form className={classes.form}>
+                                <Field
+                                    component={TextField}
+                                    type="username"
+                                    name="username"
+                                    //label="Username"
+                                    fullWidth="true"
+                                    variant="outlined"
+                                    size="small"
+                                    margin="dense"
+                                    color="main"
+                                    required
+                                    placeholder="Username"
+                                    id="input-with-icon-adornment"
+                                    FormHelperTextProps={{ classes: helperTestClasses }}
+                                    InputProps={{
+                                        className: classes.formInput,
+                                        startAdornment: <InputAdornment position="start">
+                                                            <AccountCircleIcon />
+                                                        </InputAdornment>
+                                    }}
+                                />
+                                <br />
+                                <Field
+                                    component={TextField}
+                                    name="password"
+                                    type="password"
+                                    //label="Password"
+                                    fullWidth="true"
+                                    variant="outlined"
+                                    size="small"
+                                    margin="dense"
+                                    id="outlined-error"
+                                    color="main"
+                                    required
+                                    placeholder="Password"
+                                    id="input-with-icon-adornment"
+                                    FormHelperTextProps={{ classes: helperTestClasses }}
+                                    InputProps={{
+                                        className: classes.formInput,
+                                        startAdornment: <InputAdornment position="start">
+                                                            <LockIcon />
+                                                        </InputAdornment>
+                                    }}
+                                />
+                                <br></br>
+                                {isSubmitting && <LinearProgress />}
 
-                            <Button
-                                variant="contained"
-                                disabled={isSubmitting}
-                                onClick={submitForm}
-                                className={classes.button}
-                                color="red"
-                                >
-                                Sign In
-                            </Button>
-                        </Form>
-                        </Grid>
-                        )}
-                    </Formik>
-                    <Box>
-                        <Typography variant="body1" style={{ marginTop: '1rem'}}>
-                            Don't have an account? 
-                            <Link href="#"> Sign Up</Link>
-                        </Typography>
-                        <Box className={classes.separator}>
-                            <hr className={classes.hr}></hr>Or<hr className={classes.hr}></hr>
+                                <Button
+                                    variant="contained"
+                                    disabled={isSubmitting}
+                                    onClick={submitForm}
+                                    className={classes.button}
+                                    color="red"
+                                    >
+                                    Sign In
+                                </Button>
+                            </Form>
+                            </Grid>
+                            )}
+                        </Formik>
+                        <Box>
+                            <Typography variant="body1" style={{ marginTop: '1rem'}}>
+                                Don't have an account? 
+                                <Link href="#" style={{ color: '#F46197' }}> Sign Up</Link>
+                            </Typography>
+                            <Box className={classes.separator}>
+                                <hr className={classes.hr}></hr>Or<hr className={classes.hr}></hr>
+                            </Box>
+                            <Typography variant="body1" style={{ marginBottom: '1rem'}}>Continue with social media</Typography>
+                            <Link href="#">
+                                <FontAwesomeIcon icon={['fab', 'facebook']} size="2x" className={classes.fontAwesomeIcons} />
+                            </Link>
+                            <Link href="#">
+                                <FontAwesomeIcon icon={['fab', 'twitter']} size="2x" className={classes.fontAwesomeIcons} />
+                            </Link>
+                            <Link href="#">
+                                <FontAwesomeIcon icon={['fab', 'github']} size="2x" className={classes.fontAwesomeIcons} />
+                            </Link>
                         </Box>
-                        <Typography variant="body1" style={{ marginBottom: '1rem'}}>Continue with social media</Typography>
-                        <Link href="#">
-                            <FontAwesomeIcon icon={['fab', 'facebook']} size="2x" className={classes.fontAwesomeIcons} />
-                        </Link>
-                        <Link href="#">
-                            <FontAwesomeIcon icon={['fab', 'twitter']} size="2x" className={classes.fontAwesomeIcons} />
-                        </Link>
-                        <Link href="#">
-                            <FontAwesomeIcon icon={['fab', 'github']} size="2x" className={classes.fontAwesomeIcons} />
-                        </Link>
                     </Box>
-                </Box>
+                </ScrollAnimation>
             </Grid>
         </Grid>
-        
     );
   }
