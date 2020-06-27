@@ -16,6 +16,10 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
+import LockIcon from '@material-ui/icons/Lock';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -53,6 +57,29 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         margin: '.5rem 0'
     },
+    // HR section above social media icons //
+    separator: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '.5rem 0'
+    },
+    hr: {
+        width: '150px',
+        padding: '0',
+        marginLeft: '0.5rem',
+        marginRight: '0.5rem',
+        borderTop: '1px',
+        borderColor: '#E5E5E5'
+    },
+    fontAwesomeIcons: {
+        margin: '0 0.7rem',
+        color: 'black',
+
+        '&:hover': {
+            color: theme.palette.primary.main
+        }
+    }
   }));
 
   const helperTextStyles = makeStyles(theme => ({
@@ -77,8 +104,9 @@ const useStyles = makeStyles((theme) => ({
         <Grid container >
             <Grid item xs={12}>
                 <Box align="center">
-                    <Typography variant="h5"> Welcome to </Typography>
+                    <Typography variant="h6"> Welcome to </Typography>
                     <Typography variant="h3">Company</Typography>
+                    <br></br>
                     <Formik
                     initialValues={{
                         username: '',
@@ -113,16 +141,21 @@ const useStyles = makeStyles((theme) => ({
                                 component={TextField}
                                 type="username"
                                 name="username"
-                                label="Username"
+                                //label="Username"
                                 fullWidth="true"
                                 variant="outlined"
                                 size="small"
                                 margin="dense"
                                 color="main"
                                 required
+                                placeholder="Username"
+                                id="input-with-icon-adornment"
                                 FormHelperTextProps={{ classes: helperTestClasses }}
                                 InputProps={{
                                     className: classes.formInput,
+                                    startAdornment: <InputAdornment position="start">
+                                                        <AccountCircleIcon />
+                                                    </InputAdornment>
                                 }}
                             />
                             <br />
@@ -130,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
                                 component={TextField}
                                 name="password"
                                 type="password"
-                                label="Password"
+                                //label="Password"
                                 fullWidth="true"
                                 variant="outlined"
                                 size="small"
@@ -138,14 +171,18 @@ const useStyles = makeStyles((theme) => ({
                                 id="outlined-error"
                                 color="main"
                                 required
+                                placeholder="Password"
+                                id="input-with-icon-adornment"
                                 FormHelperTextProps={{ classes: helperTestClasses }}
                                 InputProps={{
                                     className: classes.formInput,
+                                    startAdornment: <InputAdornment position="start">
+                                                        <LockIcon />
+                                                    </InputAdornment>
                                 }}
                             />
-                            <br />
+                            <br></br>
                             {isSubmitting && <LinearProgress />}
-                            <br />
 
                             <Button
                                 variant="contained"
@@ -165,9 +202,19 @@ const useStyles = makeStyles((theme) => ({
                             Don't have an account? 
                             <Link href="#"> Sign Up</Link>
                         </Typography>
-                        <FontAwesomeIcon icon={['fab', 'facebook']} size="2x" />
-                        <FontAwesomeIcon icon={['fab', 'twitter']} size="2x"/>
-                        <FontAwesomeIcon icon={['fab', 'github']} size="2x" />
+                        <Box className={classes.separator}>
+                            <hr className={classes.hr}></hr>Or<hr className={classes.hr}></hr>
+                        </Box>
+                        <Typography variant="body1" style={{ marginBottom: '1rem'}}>Continue with social media</Typography>
+                        <Link href="#">
+                            <FontAwesomeIcon icon={['fab', 'facebook']} size="2x" className={classes.fontAwesomeIcons} />
+                        </Link>
+                        <Link href="#">
+                            <FontAwesomeIcon icon={['fab', 'twitter']} size="2x" className={classes.fontAwesomeIcons} />
+                        </Link>
+                        <Link href="#">
+                            <FontAwesomeIcon icon={['fab', 'github']} size="2x" className={classes.fontAwesomeIcons} />
+                        </Link>
                     </Box>
                 </Box>
             </Grid>

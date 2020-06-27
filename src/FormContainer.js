@@ -12,10 +12,7 @@ import Form1 from './Form1';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
 import { borders } from '@material-ui/system';
 import LargeForm from './LargeForm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
-
+import Logo from './assets/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px'
     },
     split: {
-        background: 'snow',
+        background: '#FFF',
         height: '70vh',
         //margin: '3rem',
         display: 'flex'
@@ -53,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     overlay: {
         height: '100%',
         width: '70%',
-        color: 'snow',
+        color: '#FFF',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -63,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    logo: {
+        //background: 'red',
+        color: '#FFF'
     }
   }));
   
@@ -77,8 +78,9 @@ const useStyles = makeStyles((theme) => ({
             </Grid>
             <Grid item xs={12} md={5} className={[classes.split, classes.image]}>
                 <Box className={classes.overlay} borderRadius="50%">
-                    <StarHalfIcon align="center" style={{ fontSize: 45, color: 'snow' }}/>
-                    <Typography variant="h3">Company</Typography>
+                    <Box>
+                        <img src={Logo} className={classes.logo} height="300" width="300"/>
+                    </Box>
                     <Typography variant="body1" style={{ textAlign: 'center', lineHeight: '1.7' }} >
                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ornare quam viverra orci sagittis eu volutpat odio.
                     </Typography>
