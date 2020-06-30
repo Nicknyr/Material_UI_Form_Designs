@@ -8,8 +8,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab, faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import "animate.css/animate.min.css";
-import BackgroundParticles from './Particles';
-import Particles from 'react-particles-js';
  
 
 library.add(fab, faCheckSquare, faCoffee, faFacebook, faGithub, faTwitter);

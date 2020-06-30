@@ -22,7 +22,7 @@ import { positions } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: '#F46197',
+        background: theme.palette.primary.main,
         height: '100vh',
         width: '100%',
         display: 'flex',
