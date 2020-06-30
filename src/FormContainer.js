@@ -15,9 +15,6 @@ import LargeForm from './LargeForm';
 import Logo from './assets/logo.svg';
 import Logo2 from './assets/logo2-white.png';
 import ScrollAnimation from 'react-animate-on-scroll';
-import Blob from './assets/blob.svg';
-import Blob1 from './assets/blob1.svg';
-import Blob2 from './assets/blob2.svg';
 import { positions } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+        [theme.breakpoints.down('xs')]: {
+            height: '200vh'
+          },
     },  
     container: {
         display: 'flex',
@@ -40,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             backgroundColor: 'red',
             flexDirection: 'column',
-            marginTop: '10rem',
-            marginBottom: '10rem'
+            marginTop: '5rem',
+            marginBottom: '5rem'
           },
     },
     split: {
