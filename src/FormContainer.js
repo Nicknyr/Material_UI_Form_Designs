@@ -15,11 +15,14 @@ import LargeForm from './LargeForm';
 import Logo from './assets/logo.svg';
 import Logo2 from './assets/logo2-white.png';
 import ScrollAnimation from 'react-animate-on-scroll';
-
+import Blob from './assets/blob.svg';
+import Blob1 from './assets/blob1.svg';
+import Blob2 from './assets/blob2.svg';
+import { positions } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: theme.palette.primary.main,
+        background: 'snow',
         height: '100vh',
         width: '100%',
         display: 'flex',
@@ -30,26 +33,27 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 'auto',
-        background: theme.palette.primary.main,
-        //border: '10px solid red',
-        borderRadius: '20px'
+        width: '100%',
+        borderRadius: '20px',
+        zIndex: '100',
+
+        [theme.breakpoints.down('xs')]: {
+            backgroundColor: 'red',
+            flexDirection: 'column',
+            marginTop: '10rem',
+            marginBottom: '10rem'
+          },
     },
     split: {
         background: '#FFF',
-        height: '70vh',
-        //margin: '3rem',
-        display: 'flex'
+        height: '500px',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'auto',
+        padding: '1.5rem'
     },
     image: {
-        /*
-        background:`linear-gradient(
-            rgba(244, 97, 151, 0.6),
-            rgba(244, 97, 151, 0.6)
-        ),url(${Background})`,
-        */
-        //background: '#F0C808',
-        //background: '#F46197'
         background:`linear-gradient(
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
@@ -60,22 +64,29 @@ const useStyles = makeStyles((theme) => ({
     },
     overlay: {
         height: '100%',
-        width: '70%',
+        width: '100%',
         color: '#FFF',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
+        [theme.breakpoints.up('sm')]: {
+            width: '70%'
+          },
     },
     formContainer: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: '100%'
     },
     logo: {
-        //background: 'red',
-        //color: '#FFF',
-        //background: '#FFF'
+        height: '50px',
+
+        [theme.breakpoints.up('md')]: {
+            height: '70px'
+          },
     }
   }));
   
@@ -83,22 +94,26 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-        <Grid container className={classes.container}>
-            <Grid item xs={12} md={5} className={[classes.split, classes.formContainer]}>
-                <LargeForm />
-            </Grid>
-            <Grid item xs={12} md={5} className={[classes.split, classes.image]}>
-                <Box className={classes.overlay} borderRadius="50%">
-                    <Box>
-                        <img src={Logo2} className={classes.logo} height="70"/>
+    <Grid container className={classes.root}>
+        <Grid item xs={11} md={10} xl={6}>
+            <Paper elevation="10" className={classes.container}>
+                <Grid item xs={12}  className={classes.split} >
+                    <LargeForm />
+                </Grid>
+                <Grid item xs={12}  className={[classes.split, classes.image]}>
+                    <Box className={classes.overlay} borderRadius="50%" zIndex="100">
+                        <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                            <Box align="center">
+                                <img src={Logo2} className={classes.logo}/>
+                            </Box>
+                            <Typography variant="body1" style={{ textAlign: 'center', lineHeight: '1.7' }} >
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </Typography>
+                        </ScrollAnimation>
                     </Box>
-                    <Typography variant="body1" style={{ textAlign: 'center', lineHeight: '1.7' }} >
-                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ornare quam viverra orci sagittis eu volutpat odio.
-                    </Typography>
-                </Box>
-            </Grid>
+                </Grid>
+            </Paper>
         </Grid>
-        </div>
+    </Grid>
     );
   }

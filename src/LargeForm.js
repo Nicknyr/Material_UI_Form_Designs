@@ -21,7 +21,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Logo2 from './assets/logo2.png';
 import ScrollAnimation from 'react-animate-on-scroll';
-
+import Logo2Pink from './assets/logo2-pink.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -77,11 +77,19 @@ const useStyles = makeStyles((theme) => ({
     },
     fontAwesomeIcons: {
         margin: '0 0.7rem',
-        color: 'black',
+        color: '#F46197',
 
         '&:hover': {
-            color: '#F46197'
+            color: '#F46197',
+            opacity: '.9'
         }
+    },
+    logo: {
+        height: "50px",
+
+        [theme.breakpoints.up('md')]: {
+            height: '70px'
+          },
     }
   }));
 
@@ -109,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                     <Box align="center">
                         <Typography variant="h6"> Welcome to </Typography>
-                        <img src={Logo2} height="60"></img>
+                        <img src={Logo2Pink} className={classes.logo}></img>
                         <br></br>
                         <br></br>
                         <Formik
@@ -140,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
                         }}
                     >
                         {({ submitForm, isSubmitting }) => (
-                            <Grid item xs={8}>
+                            <Grid item xs={12} sm={8}>
                             <Form className={classes.form}>
                                 <Field
                                     component={TextField}
